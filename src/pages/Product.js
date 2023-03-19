@@ -1,40 +1,41 @@
 import React, { useEffect, useState } from 'react'
 import { Layout } from '../components/Components'
 import axios from 'axios'
-
+import apiurl from '../config/config.js'
 const Product = () => {
 
     const [product, setProduct] = useState();
     const [productTitle , setProductTitle] = useState("laptop")
     const [brands, setBrand] = useState();
 
+
     useEffect(() => {
-        axios.get(`http://localhost:5000/categories/laptop`).then(data => {
+        axios.get(`${apiurl}/categories/laptop`).then(data => {
             setProduct(data.data)
         })
 
-        axios.get('http://localhost:5000/brands').then(data => {
+        axios.get(`${apiurl}/brands`).then(data => {
             setBrand(data.data)
         })
 
     }, [])
 
-    useEffect(() => {
-        console.log(brands);
-    }, [brands])
+    // useEffect(() => {
+    //     console.log(brands);
+    // }, [brands])
 
 
     const handleProducts = (e) => {
         const { name } = e.target
         setProductTitle(name);
-        axios.get(`http://localhost:5000/categories/${name}`).then(data => {
+        axios.get(`${apiurl}/categories/${name}`).then(data => {
             setProduct(data.data)
         })
     }
 
     const handleProductsbrand = (e) => {
         const { value } = e.target
-        axios.get(`http://localhost:5000/brands/${value}`).then(data => {
+        axios.get(`${apiurl}/brands/${value}`).then(data => {
             setProduct(data.data)
         })
     }
