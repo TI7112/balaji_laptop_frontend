@@ -92,7 +92,7 @@ const Product = () => {
                     </div>
                     <div className="grid grid-cols-3 py-10 gap-16">
                         {product ? product.map((curElem, index) => (
-                            <NewLaptopsCategoryView key={index} title={curElem.product_title} desc={curElem.product_desc} imgurl={require(`../assets/img/${curElem.product_img}`)} redirecturl={`/product/${curElem.product_model}`} />
+                            <NewLaptopsCategoryView key={index} title={curElem.product_title} desc={curElem.product_desc} imgurl={require(`../assets/img/${curElem.product_img}`)} redirecturl={`/products/${curElem.product_model}`} />
 
                         )) : ""}
                     </div>
